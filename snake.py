@@ -7,6 +7,7 @@ width = 640
 height = 480
 default_rect_size = moving_step = 25
 finished = False
+score = 0
 
 def update(self, snake):
     def roll():
@@ -148,11 +149,12 @@ while True:
     if food.draw.colliderect(p1.length[0].draw):
         p1.add()
         food.update(food, p1)
+        score += 1
 
     for i in range(1, len(p1.length)):
         if 'draw' in dir(p1.length[i]):
             if p1.length[0].draw.colliderect(p1.length[i].draw):
                 finished = True
-                ''
+                print(f'Score: {score}')
 
     pygame.display.update()
